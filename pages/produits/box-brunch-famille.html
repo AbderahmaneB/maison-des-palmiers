@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Box Brunch Famille - Pour 4 personnes - La Maison des Palmiers">
+    <title>Box Brunch Famille | La Maison des Palmiers</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        /* ============================================
+           PAGE PRODUIT - DESIGN ÉPURÉ & LUXUEUX
+           ============================================ */
+
+        .product-page {
+            background: linear-gradient(180deg, var(--white) 0%, var(--ivory) 100%);
+            min-height: 100vh;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 100px 0 var(--space-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--charcoal);
+        }
+
+        .breadcrumb-list span {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .breadcrumb-separator {
+            width: 4px;
+            height: 4px;
+            background: var(--beige-medium);
+            border-radius: 50%;
+        }
+
+        /* ============================================
+           SECTION PRINCIPALE
+           ============================================ */
+
+        .product-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 0 var(--space-3xl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            overflow: visible;
+        }
+
+        /* ============================================
+           GALERIE
+           ============================================ */
+
+        .gallery {
+            position: sticky;
+            top: 100px;
+        }
+
+        .gallery-main {
+            position: relative;
+            aspect-ratio: 1;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+
+        .gallery-main:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-badge {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            padding: 8px 16px;
+            background: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .gallery-badge-popular {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            background: var(--gold);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .gallery-thumb {
+            flex: 1;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+            background: none;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s;
+        }
+
+        .gallery-thumb:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .gallery-thumb:hover img {
+            filter: grayscale(0%);
+        }
+
+        .gallery-thumb.active {
+            border-color: var(--charcoal);
+        }
+
+        .gallery-thumb.active img {
+            filter: grayscale(0%);
+        }
+
+        /* ============================================
+           INFORMATIONS PRODUIT
+           ============================================ */
+
+        .product-info {
+            padding-top: var(--space-md);
+            overflow: visible;
+        }
+
+        /* En-tête */
+        .product-header {
+            margin-bottom: var(--space-xl);
+            overflow: visible;
+        }
+
+        .product-category {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .product-title {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            line-height: 1.15;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .product-tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Prix */
+        .product-price-block {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--white) 100%);
+            border: 2px solid var(--beige-medium);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: visible;
+        }
+
+        .price-main {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .product-price {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .product-currency {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .price-info {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .price-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--gold);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+        }
+
+        .price-note {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Description */
+        .product-description {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .product-description p {
+            font-size: 16px;
+            font-weight: 450;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        /* Composition */
+        .product-composition {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--beige-light);
+        }
+
+        .composition-title {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: var(--space-sm);
+        }
+
+        .composition-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .composition-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .composition-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .composition-icon svg {
+            width: 12px;
+            height: 12px;
+            color: white;
+        }
+
+        /* ============================================
+           PERSONNALISATION
+           ============================================ */
+
+        .customization {
+            margin-top: var(--space-xl);
+        }
+
+        .customization-title {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .customization-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--beige-medium);
+        }
+
+        /* Groupe d'options */
+        .option-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .option-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-label svg {
+            width: 16px;
+            height: 16px;
+            color: var(--gold-dark);
+        }
+
+        /* Sélection de taille */
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .size-card {
+            padding: 16px 12px;
+            background: var(--white);
+            border: 2px solid var(--beige-medium);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        .size-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .size-card.active {
+            border-color: var(--charcoal);
+            background: var(--charcoal);
+        }
+
+        .size-card.active .size-name,
+        .size-card.active .size-pieces,
+        .size-card.active .size-price {
+            color: white;
+        }
+
+        .size-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+
+        .size-pieces {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .size-price {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold-dark);
+        }
+
+        .size-card.active .size-price {
+            color: var(--gold-light);
+        }
+
+        /* Select input */
+        .select-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 14px;
+            font-family: var(--font-sans);
+            background: var(--white);
+            border: 2px solid var(--beige-medium);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237A6548' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 18px;
+        }
+
+        .select-input:focus {
+            outline: none;
+            border-color: var(--gold-dark);
+        }
+
+        /* Textarea */
+        .message-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 14px;
+            font-family: var(--font-sans);
+            background: var(--white);
+            border: 2px solid var(--beige-medium);
+            border-radius: 12px;
+            resize: none;
+            transition: all 0.3s ease;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: var(--gold-dark);
+        }
+
+        .message-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Options checkbox */
+        .extras-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .extra-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            background: var(--white);
+            border: 2px solid var(--beige-medium);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .extra-item:hover {
+            border-color: var(--gold);
+        }
+
+        .extra-item.checked {
+            border-color: var(--charcoal);
+            background: linear-gradient(135deg, rgba(26,26,26,0.02) 0%, rgba(26,26,26,0.05) 100%);
+        }
+
+        .extra-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--beige-medium);
+            border-radius: 6px;
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .extra-item.checked .extra-checkbox {
+            background: var(--charcoal);
+            border-color: var(--charcoal);
+        }
+
+        .extra-checkbox svg {
+            width: 14px;
+            height: 14px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease;
+        }
+
+        .extra-item.checked .extra-checkbox svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .extra-content {
+            flex: 1;
+        }
+
+        .extra-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .extra-desc {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .extra-price {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--charcoal);
+        }
+
+        .extra-free {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           CTA
+           ============================================ */
+
+        .product-cta {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--beige-medium);
+        }
+
+        .cta-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-total-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .cta-total-price {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .cta-total-price span {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(122, 101, 72, 0.3);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-note {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cta-note svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
+           AVANTAGES
+           ============================================ */
+
+        .advantages {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--sand-light) 0%, var(--white) 100%);
+        }
+
+        .advantages-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        .advantages-grid {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Ligne de connexion ondulée */
+        .advantages-line {
+            position: absolute;
+            top: 75px;
+            left: 10%;
+            right: 10%;
+            height: 40px;
+            z-index: 0;
+            overflow: visible;
+        }
+
+        .advantages-line svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .advantages-line path {
+            fill: none;
+            stroke: url(#wave-gradient);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 30px 24px;
+            flex: 1;
+            max-width: 280px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .advantage-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+            background: linear-gradient(145deg, var(--white) 0%, var(--sand-light) 100%);
+            border: 3px solid var(--beige-medium);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(122, 101, 72, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .advantage-card:hover .advantage-icon {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 16px 40px rgba(122, 101, 72, 0.22);
+        }
+
+        .advantage-icon svg {
+            width: 48px;
+            height: 48px;
+            color: var(--gold-dark);
+        }
+
+        .advantage-title {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .advantage-desc {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .advantages-grid {
+                flex-wrap: wrap;
+                gap: var(--space-xl);
+            }
+
+            .advantages-line {
+                display: none;
+            }
+
+            .advantage-card {
+                flex: 0 0 45%;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .advantages {
+                padding: 50px 0;
+            }
+
+            .advantage-card {
+                flex: 0 0 100%;
+            }
+
+            .advantage-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .advantage-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .advantage-title {
+                font-size: 20px;
+            }
+        }
+
+        /* ============================================
+           PRODUITS SIMILAIRES
+           ============================================ */
+
+        .related {
+            padding: var(--space-3xl) 0;
+            background: var(--ivory);
+        }
+
+        .related-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .related-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .related-title {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            color: var(--charcoal);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 1200px) {
+            .breadcrumb,
+            .product-main,
+            .advantages-inner,
+            .related-inner {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .product-main {
+                gap: 48px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .product-main {
+                grid-template-columns: 1fr;
+                gap: var(--space-2xl);
+            }
+
+            .gallery {
+                position: relative;
+                top: 0;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .breadcrumb {
+                padding-top: 90px;
+            }
+
+            .product-title {
+                font-size: 28px;
+            }
+
+            .product-price {
+                font-size: 32px;
+            }
+
+            .size-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-total-price {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body class="product-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="../../index.html" class="navbar-logo">La Maison des Palmiers</a>
+            <div class="navbar-menu">
+                <div class="navbar-dropdown">
+                    <span class="navbar-link navbar-dropdown-toggle active">
+                        Boutique <i data-lucide="chevron-down"></i>
+                    </span>
+                    <div class="navbar-dropdown-menu">
+                        <a href="../boutique.html#ecrins" class="navbar-dropdown-item">Les Écrins<span>Coffrets cadeaux</span></a>
+                        <a href="../boutique.html#box" class="navbar-dropdown-item">Les Box<span>Petit-déj & Brunch</span></a>
+                        <a href="../boutique.html#boissons" class="navbar-dropdown-item">Boissons<span>Jus maison</span></a>
+                    </div>
+                </div>
+                <a href="../traiteur.html" class="navbar-link">Traiteur</a>
+                <a href="../contact.html" class="navbar-link">Contact</a>
+            </div>
+            <button class="navbar-toggle" id="menu-toggle" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-header">
+                <span class="mobile-menu-title">Menu</span>
+                <button class="mobile-menu-close" id="menu-close"><i data-lucide="x"></i></button>
+            </div>
+            <nav class="mobile-menu-nav">
+                <a href="../boutique.html" class="mobile-menu-link">Boutique</a>
+                <a href="../traiteur.html" class="mobile-menu-link">Traiteur</a>
+                <a href="../contact.html" class="mobile-menu-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <nav class="breadcrumb-list" aria-label="breadcrumb">
+            <a href="../../index.html">Accueil</a>
+            <span class="breadcrumb-separator"></span>
+            <a href="../boutique.html">Boutique</a>
+            <span class="breadcrumb-separator"></span>
+            <a href="../boutique.html#box">Box</a>
+            <span class="breadcrumb-separator"></span>
+            <span>Box Brunch Famille</span>
+        </nav>
+    </div>
+
+    <!-- SECTION PRINCIPALE -->
+    <section class="product-main">
+
+        <!-- GALERIE -->
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200" alt="Box Brunch Famille" id="main-image">
+                <span class="gallery-badge">Collection Box</span>
+                <span class="gallery-badge-popular">Populaire</span>
+            </div>
+            <div class="gallery-thumbs">
+                <button class="gallery-thumb active" data-image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=200" alt="Vue 1">
+                </button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=1200">
+                    <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=200" alt="Vue 2">
+                </button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=1200">
+                    <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=200" alt="Vue 3">
+                </button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=200" alt="Vue 4">
+                </button>
+            </div>
+        </div>
+
+        <!-- INFORMATIONS -->
+        <div class="product-info">
+
+            <!-- En-tête -->
+            <header class="product-header">
+                <span class="product-category">Collection Box</span>
+                <h1 class="product-title">Box Brunch Famille</h1>
+                <p class="product-tagline">Pour 4 personnes</p>
+
+                <div class="product-price-block">
+                    <div class="price-main">
+                        <span class="product-price" id="display-price">920</span>
+                        <span class="product-currency">MAD</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="price-badge">Populaire</span>
+                        <p class="price-note">4 personnes • Livraison matin</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Description -->
+            <div class="product-description">
+                <p>
+                    Un brunch complet et gourmand pour partager un moment convivial en famille. Viennoiseries artisanales,
+                    fruits frais, charcuterie fine, fromages locaux et nos spécialités maison, livrés dans un emballage élégant.
+                </p>
+
+                <div class="product-composition">
+                    <h3 class="composition-title">Composition</h3>
+                    <div class="composition-list">
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Viennoiseries artisanales (croissants, pains au chocolat)
+                        </div>
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Plateau de fruits frais de saison
+                        </div>
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Assortiment fromages et charcuterie
+                        </div>
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Confitures maison et pâte à tartiner
+                        </div>
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            4 jus d'orange frais pressés (50cl)
+                        </div>
+                        <div class="composition-item">
+                            <span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            Pain frais du jour
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personnalisation -->
+            <div class="customization">
+                <h2 class="customization-title">Personnalisation</h2>
+
+                <!-- Nombre de personnes -->
+                <div class="option-group">
+                    <label class="option-label">
+                        <i data-lucide="users"></i>
+                        Nombre de personnes
+                    </label>
+                    <div class="size-grid">
+                        <div class="size-card" data-size="duo" data-price="520">
+                            <div class="size-name">Duo</div>
+                            <div class="size-pieces">2 personnes</div>
+                            <div class="size-price">520 MAD</div>
+                        </div>
+                        <div class="size-card active" data-size="famille" data-price="920">
+                            <div class="size-name">Famille</div>
+                            <div class="size-pieces">4 personnes</div>
+                            <div class="size-price">920 MAD</div>
+                        </div>
+                        <div class="size-card" data-size="xl" data-price="1450">
+                            <div class="size-name">XL</div>
+                            <div class="size-pieces">6-8 personnes</div>
+                            <div class="size-price">1 450 MAD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Heure de livraison -->
+                <div class="option-group">
+                    <label class="option-label">
+                        <i data-lucide="clock"></i>
+                        Heure de livraison
+                    </label>
+                    <select id="delivery-time" class="select-input">
+                        <option value="">Sélectionnez un créneau</option>
+                        <option value="08:00">08:00 - 09:00</option>
+                        <option value="09:00">09:00 - 10:00</option>
+                        <option value="10:00">10:00 - 11:00</option>
+                        <option value="11:00">11:00 - 12:00</option>
+                        <option value="12:00">12:00 - 13:00</option>
+                    </select>
+                </div>
+
+                <!-- Préférences alimentaires -->
+                <div class="option-group">
+                    <label class="option-label">
+                        <i data-lucide="leaf"></i>
+                        Préférences alimentaires
+                    </label>
+                    <div class="extras-list">
+                        <div class="extra-item" data-extra="vegetarian" data-price="0">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">Option végétarienne</div>
+                                <div class="extra-desc">Charcuterie remplacée par alternatives végé</div>
+                            </div>
+                            <div class="extra-free">Gratuit</div>
+                        </div>
+                        <div class="extra-item" data-extra="halal" data-price="0">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">Sans porc (halal)</div>
+                                <div class="extra-desc">Charcuterie halal uniquement</div>
+                            </div>
+                            <div class="extra-free">Gratuit</div>
+                        </div>
+                        <div class="extra-item" data-extra="gluten-free" data-price="50">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">Sans gluten</div>
+                                <div class="extra-desc">Viennoiseries et pain sans gluten</div>
+                            </div>
+                            <div class="extra-price">+50 MAD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boissons supplémentaires -->
+                <div class="option-group">
+                    <label class="option-label">
+                        <i data-lucide="coffee"></i>
+                        Boissons supplémentaires
+                    </label>
+                    <div class="extras-list">
+                        <div class="extra-item" data-extra="coffee" data-price="40">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">4 cafés à emporter</div>
+                                <div class="extra-desc">Espresso ou americano</div>
+                            </div>
+                            <div class="extra-price">+40 MAD</div>
+                        </div>
+                        <div class="extra-item" data-extra="smoothies" data-price="120">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">4 smoothies fruits rouges</div>
+                                <div class="extra-desc">Fraise, framboise, myrtille</div>
+                            </div>
+                            <div class="extra-price">+120 MAD</div>
+                        </div>
+                        <div class="extra-item" data-extra="detox" data-price="100">
+                            <div class="extra-checkbox">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="extra-content">
+                                <div class="extra-name">4 green detox</div>
+                                <div class="extra-desc">Épinard, pomme, gingembre</div>
+                            </div>
+                            <div class="extra-price">+100 MAD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructions -->
+                <div class="option-group">
+                    <label class="option-label" for="instructions">
+                        <i data-lucide="message-square"></i>
+                        Instructions spéciales
+                    </label>
+                    <textarea
+                        id="instructions"
+                        class="message-input"
+                        placeholder="Allergies, préférences particulières..."
+                        rows="2"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="product-cta">
+                <div class="cta-total">
+                    <span class="cta-total-label">Total</span>
+                    <span class="cta-total-price"><span id="total-price">920</span> <span>MAD</span></span>
+                </div>
+                <button class="cta-button" id="order-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Commander sur WhatsApp
+                </button>
+                <p class="cta-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2.81A2 2 0 0 1 20 8v8a2 2 0 0 1-2 2h-2"/><polyline points="17 14 12 9 7 14"/><line x1="12" x2="12" y1="9" y2="21"/></svg>
+                    Livraison le lendemain matin
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- AVANTAGES -->
+    <section class="advantages">
+        <div class="advantages-inner">
+            <div class="advantages-grid">
+                <!-- Ligne ondulée -->
+                <div class="advantages-line">
+                    <svg viewBox="0 0 800 30" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#D9CFC0" stop-opacity="0"/>
+                                <stop offset="10%" stop-color="#D9CFC0"/>
+                                <stop offset="50%" stop-color="#7A6548"/>
+                                <stop offset="90%" stop-color="#D9CFC0"/>
+                                <stop offset="100%" stop-color="#D9CFC0" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,15 Q100,5 200,15 T400,15 T600,15 T800,15"/>
+                    </svg>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>
+                    </div>
+                    <h3 class="advantage-title">Frais du matin</h3>
+                    <p class="advantage-desc">Viennoiseries préparées le jour même</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3 class="advantage-title">Produits locaux</h3>
+                    <p class="advantage-desc">Fruits et ingrédients de producteurs locaux</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" x2="18" y1="17" y2="17"/></svg>
+                    </div>
+                    <h3 class="advantage-title">100% maison</h3>
+                    <p class="advantage-desc">Confitures et pâtisseries artisanales</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    </div>
+                    <h3 class="advantage-title">Parfait à partager</h3>
+                    <p class="advantage-desc">Quantités généreuses pour tous</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUITS SIMILAIRES -->
+    <section class="related">
+        <div class="related-inner">
+            <header class="related-header">
+                <h2 class="heading-decorated">Autres Box</h2>
+            </header>
+            <div class="related-grid">
+                <article class="product-card">
+                    <a href="../boutique.html#box">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=800" alt="Box Petit-Déj Duo">
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Petit-Déj Duo</h3>
+                                    <p class="product-card-subtitle">Pour 2 personnes</p>
+                                </div>
+                                <span class="product-card-price">320 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="product-card">
+                    <a href="../boutique.html#box">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800" alt="Box Healthy">
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Healthy</h3>
+                                    <p class="product-card-subtitle">Smoothie bowl & granola</p>
+                                </div>
+                                <span class="product-card-price">380 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="product-card">
+                    <a href="../boutique.html#box">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800" alt="Box Goûter">
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Goûter</h3>
+                                    <p class="product-card-subtitle">Pâtisseries & thé</p>
+                                </div>
+                                <span class="product-card-price">280 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-2xl); padding-bottom: var(--space-2xl);">
+                <div>
+                    <h3 class="text-serif text-italic" style="font-size: var(--text-xl); color: var(--gold-light); margin-bottom: var(--space-sm);">La Maison des Palmiers</h3>
+                    <p class="text-sm" style="color: var(--text-on-dark-muted); line-height: 1.6;">Écrins, Box & Jus artisanaux à Marrakech</p>
+                </div>
+                <div>
+                    <h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Navigation</h4>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                        <a href="../boutique.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Boutique</a>
+                        <a href="../traiteur.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Traiteur</a>
+                        <a href="../contact.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                        <a href="tel:+212600000000" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">+212 6 00 00 00 00</a>
+                        <a href="https://www.instagram.com/la_maison_des_palmiers/" target="_blank" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Instagram</a>
+                        <a href="https://wa.me/212600000000" target="_blank" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p class="text-xs" style="color: var(--text-on-dark-muted);">© 2026 La Maison des Palmiers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/212600000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="../../js/animations.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <script>lucide.createIcons();</script>
+
+    <script>
+        // ============================================
+        // ÉTAT
+        // ============================================
+        let state = {
+            size: 'famille',
+            basePrice: 920,
+            extras: new Set(),
+            deliveryTime: '',
+            instructions: ''
+        };
+
+        // Prix des tailles
+        const sizePrices = {
+            duo: 520,
+            famille: 920,
+            xl: 1450
+        };
+
+        // Prix des extras
+        const extraPrices = {
+            'vegetarian': 0,
+            'halal': 0,
+            'gluten-free': 50,
+            'coffee': 40,
+            'smoothies': 120,
+            'detox': 100
+        };
+
+        // Labels des extras
+        const extraLabels = {
+            'vegetarian': 'Option végétarienne',
+            'halal': 'Sans porc (halal)',
+            'gluten-free': 'Sans gluten',
+            'coffee': '4 cafés',
+            'smoothies': '4 smoothies fruits rouges',
+            'detox': '4 green detox'
+        };
+
+        // ============================================
+        // GALERIE
+        // ============================================
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const mainImage = document.getElementById('main-image');
+                const newSrc = thumb.dataset.image;
+
+                mainImage.style.opacity = '0';
+                setTimeout(() => {
+                    mainImage.src = newSrc;
+                    mainImage.style.opacity = '1';
+                }, 200);
+
+                document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+        });
+
+        // ============================================
+        // SÉLECTION DE TAILLE
+        // ============================================
+        document.querySelectorAll('.size-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.size-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+
+                state.size = card.dataset.size;
+                state.basePrice = sizePrices[state.size];
+
+                updatePrice();
+            });
+        });
+
+        // ============================================
+        // EXTRAS
+        // ============================================
+        document.querySelectorAll('.extra-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('checked');
+
+                const extra = item.dataset.extra;
+                if (state.extras.has(extra)) {
+                    state.extras.delete(extra);
+                } else {
+                    state.extras.add(extra);
+                }
+
+                updatePrice();
+            });
+        });
+
+        // ============================================
+        // INPUTS
+        // ============================================
+        document.getElementById('delivery-time').addEventListener('change', (e) => {
+            state.deliveryTime = e.target.value;
+        });
+
+        document.getElementById('instructions').addEventListener('input', (e) => {
+            state.instructions = e.target.value;
+        });
+
+        // ============================================
+        // MISE À JOUR DU PRIX
+        // ============================================
+        function updatePrice() {
+            let total = state.basePrice;
+
+            state.extras.forEach(extra => {
+                total += extraPrices[extra];
+            });
+
+            document.getElementById('display-price').textContent = total.toLocaleString('fr-FR');
+            document.getElementById('total-price').textContent = total.toLocaleString('fr-FR');
+        }
+
+        // ============================================
+        // COMMANDE
+        // ============================================
+        document.getElementById('order-btn').addEventListener('click', () => {
+            let total = state.basePrice;
+            let preferences = [];
+            let drinks = [];
+
+            // Calculer le total et catégoriser les extras
+            state.extras.forEach(extra => {
+                total += extraPrices[extra];
+
+                if (['vegetarian', 'halal', 'gluten-free'].includes(extra)) {
+                    preferences.push(extraLabels[extra]);
+                } else {
+                    drinks.push(extraLabels[extra]);
+                }
+            });
+
+            // Construire le message
+            let message = `Bonjour, je souhaite commander :\n\n`;
+            message += `🥐 *Box Brunch Famille*\n`;
+            message += `👥 Pour : ${state.size === 'duo' ? '2 personnes' : state.size === 'famille' ? '4 personnes' : '6-8 personnes'}\n`;
+
+            if (state.deliveryTime) {
+                message += `🕐 Livraison : ${state.deliveryTime}\n`;
+            }
+
+            if (preferences.length > 0) {
+                message += `🌱 Préférences : ${preferences.join(', ')}\n`;
+            }
+
+            if (drinks.length > 0) {
+                message += `☕ Boissons : ${drinks.join(', ')}\n`;
+            }
+
+            if (state.instructions) {
+                message += `📝 Instructions : "${state.instructions}"\n`;
+            }
+
+            message += `\n💰 *Total : ${total.toLocaleString('fr-FR')} MAD*`;
+
+            const whatsappUrl = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+</body>
+</html>

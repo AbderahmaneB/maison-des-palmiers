@@ -1,0 +1,114 @@
+/* =============================================
+   LA MAISON DES PALMIERS - VARIABLES CSS
+   Direction Artistique : Sable, Or, Charbon
+   ACCESSIBILITÉ : Contrastes WCAG AA
+   ============================================= */
+
+:root {
+    /* --- COULEURS PRINCIPALES --- */
+    --sand: #E8E2D9;
+    --sand-light: #F5F2EE;
+    --sand-dark: #D4C9BA;
+    --beige-deep: #C4B49B;            /* Plus clair pour meilleur contraste texte */
+    --beige-darker: #B5A48C;          /* Plus clair pour meilleur contraste texte */
+    --beige-medium: #D9CFC0;
+    --beige-light: #E8E2D9;
+    --charcoal: #1A1A1A;
+    --charcoal-light: #2D2D2D;
+    --gold: #7A6548;
+    --gold-light: #C9A96E;           /* Plus clair pour meilleur contraste sur dark */
+    --gold-dark: #5C4D36;
+    --ivory: #FAFAF9;
+    --white: #FFFFFF;
+
+    /* --- COULEURS TEXTE (Accessibilité WCAG AA minimum 4.5:1) --- */
+    --text-primary: #1A1A1A;
+    --text-secondary: #2E2E2E;      /* Plus foncé pour meilleur contraste */
+    --text-muted: #454545;          /* Plus foncé pour meilleur contraste */
+    --text-on-dark: #FFFFFF;
+    --text-on-dark-muted: #E0E0E0;  /* Plus clair pour meilleur contraste */
+
+    /* --- COULEURS FONCTIONNELLES --- */
+    --success: #1D8348;
+    --error: #C62828;
+    --overlay-dark: rgba(26, 26, 26, 0.75);
+    --overlay-light: rgba(232, 226, 217, 0.9);
+
+    /* --- TYPOGRAPHIE --- */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Tailles - Standards web pour lisibilité optimale */
+    --text-xs: 0.8125rem;   /* 13px */
+    --text-sm: 0.9375rem;   /* 15px */
+    --text-base: 1.0625rem; /* 17px */
+    --text-lg: 1.1875rem;   /* 19px */
+    --text-xl: 1.375rem;    /* 22px */
+    --text-2xl: 1.625rem;   /* 26px */
+    --text-3xl: 2.125rem;   /* 34px */
+    --text-4xl: 2.625rem;   /* 42px */
+    --text-5xl: 3.125rem;   /* 50px */
+    --text-6xl: 3.75rem;    /* 60px */
+    --text-hero: 4.5rem;    /* 72px */
+
+    /* Font Weights - Standards */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* --- ESPACEMENTS --- */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 5rem;
+    --space-section: 6rem;
+
+    /* --- TRANSITIONS --- */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-luxe: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* --- OMBRES --- */
+    --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
+    --shadow-md: 0 4px 16px rgba(26, 26, 26, 0.1);
+    --shadow-lg: 0 8px 32px rgba(26, 26, 26, 0.14);
+    --shadow-gold: 0 4px 20px rgba(122, 101, 72, 0.25);
+
+    /* --- BORDURES --- */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 50%;
+
+    /* --- Z-INDEX --- */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 500;
+    --z-modal: 1000;
+    --z-loader: 9999;
+
+    /* --- CONTENEURS --- */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1200px;
+    --container-2xl: 1400px;
+}
+
+/* --- DARK MODE (sections sombres) --- */
+[data-theme="dark"] {
+    --bg-primary: var(--charcoal);
+    --bg-secondary: var(--charcoal-light);
+    --text-primary: var(--text-on-dark);
+    --text-secondary: var(--text-on-dark-muted);
+    --accent: var(--gold-light);
+}

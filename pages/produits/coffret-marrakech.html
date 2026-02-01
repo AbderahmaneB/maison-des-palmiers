@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Coffret Marrakech - Édition Signature - La Maison des Palmiers">
+    <title>Le Coffret Marrakech | La Maison des Palmiers</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        .product-page { background: linear-gradient(180deg, var(--white) 0%, var(--ivory) 100%); min-height: 100vh; }
+        .breadcrumb { padding: 100px 0 var(--space-lg); max-width: 1400px; margin: 0 auto; }
+        .breadcrumb-list { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--text-muted); }
+        .breadcrumb-list a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb-list a:hover { color: var(--charcoal); }
+        .breadcrumb-list span { color: var(--charcoal); font-weight: 600; }
+        .breadcrumb-separator { width: 4px; height: 4px; background: var(--beige-medium); border-radius: 50%; }
+        .product-main { max-width: 1400px; margin: 0 auto; padding: 0 0 var(--space-3xl); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .gallery { position: sticky; top: 100px; }
+        .gallery-main { position: relative; aspect-ratio: 1; background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+        .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s, opacity 0.3s; }
+        .gallery-main:hover img { transform: scale(1.03); }
+        .gallery-badge { position: absolute; top: 24px; left: 24px; padding: 8px 16px; background: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: white; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .gallery-thumbs { display: flex; gap: 12px; margin-top: 16px; }
+        .gallery-thumb { flex: 1; aspect-ratio: 1; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all 0.3s; padding: 0; background: none; }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: filter 0.3s; }
+        .gallery-thumb:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .gallery-thumb:hover img { filter: grayscale(0%); }
+        .gallery-thumb.active { border-color: var(--charcoal); }
+        .gallery-thumb.active img { filter: grayscale(0%); }
+        .product-info { padding-top: var(--space-md); }
+        .product-header { margin-bottom: var(--space-xl); }
+        .product-category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: var(--space-sm); }
+        .product-title { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 48px); font-weight: 500; line-height: 1.15; color: var(--charcoal); margin-bottom: 8px; }
+        .product-tagline { font-family: var(--font-serif); font-style: italic; font-size: 20px; color: var(--text-secondary); }
+        .product-price-block { margin-top: var(--space-lg); padding: var(--space-lg); background: linear-gradient(135deg, var(--ivory) 0%, var(--white) 100%); border: 2px solid var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .price-main { display: flex; align-items: baseline; gap: 8px; }
+        .product-price { font-family: var(--font-serif); font-size: 48px; font-weight: 700; color: var(--charcoal); }
+        .product-currency { font-size: 18px; font-weight: 600; color: var(--text-secondary); }
+        .price-note { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+        .product-description { margin-top: var(--space-xl); padding: var(--space-lg); background: var(--white); border-radius: 12px; border: 1px solid rgba(0,0,0,0.04); }
+        .product-description p { font-size: 16px; line-height: 1.8; color: var(--text-primary); }
+        .product-composition { margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--beige-light); }
+        .composition-title { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); margin-bottom: var(--space-sm); }
+        .composition-list { display: grid; gap: 8px; }
+        .composition-item { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; color: var(--text-primary); }
+        .composition-icon { width: 20px; height: 20px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .composition-icon svg { width: 12px; height: 12px; color: white; }
+        .customization { margin-top: var(--space-xl); }
+        .customization-title { font-family: var(--font-serif); font-size: 22px; color: var(--charcoal); margin-bottom: var(--space-lg); display: flex; align-items: center; gap: var(--space-sm); }
+        .customization-title::after { content: ''; flex: 1; height: 1px; background: var(--beige-medium); }
+        .option-group { margin-bottom: var(--space-lg); }
+        .option-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); margin-bottom: var(--space-sm); display: flex; align-items: center; gap: 8px; }
+        .extras-list { display: flex; flex-direction: column; gap: 10px; }
+        .extra-item { display: flex; align-items: center; padding: 14px 16px; background: var(--white); border: 2px solid var(--beige-medium); border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+        .extra-item:hover { border-color: var(--gold); }
+        .extra-item.checked { border-color: var(--charcoal); background: linear-gradient(135deg, rgba(26,26,26,0.02), rgba(26,26,26,0.05)); }
+        .extra-checkbox { width: 22px; height: 22px; border: 2px solid var(--beige-medium); border-radius: 6px; margin-right: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; flex-shrink: 0; }
+        .extra-item.checked .extra-checkbox { background: var(--charcoal); border-color: var(--charcoal); }
+        .extra-checkbox svg { width: 14px; height: 14px; color: white; opacity: 0; transform: scale(0.5); transition: all 0.2s; }
+        .extra-item.checked .extra-checkbox svg { opacity: 1; transform: scale(1); }
+        .extra-content { flex: 1; }
+        .extra-name { font-size: 15px; font-weight: 600; color: var(--charcoal); }
+        .extra-desc { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+        .extra-input { display: none; width: 100%; margin-top: 10px; padding: 10px 14px; font-size: 14px; font-family: var(--font-sans); border: 2px solid var(--beige-medium); border-radius: 8px; background: var(--white); color: var(--charcoal); }
+        .extra-input:focus { outline: none; border-color: var(--gold); }
+        .extra-item.checked .extra-input { display: block; }
+        .extra-price { font-weight: 700; font-size: 15px; color: var(--charcoal); }
+        .product-cta { margin-top: var(--space-xl); padding-top: var(--space-xl); border-top: 1px solid var(--beige-medium); }
+        .cta-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
+        .cta-total-label { font-size: 16px; font-weight: 600; color: var(--charcoal); }
+        .cta-total-price { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: var(--charcoal); }
+        .cta-total-price span { font-size: 18px; }
+        .cta-button { width: 100%; padding: 20px; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--charcoal); color: white; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.3s; }
+        .cta-button:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(122, 101, 72, 0.3); }
+        .cta-button svg { width: 20px; height: 20px; }
+        .cta-note { text-align: center; font-size: 14px; color: var(--text-secondary); margin-top: var(--space-md); display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .advantages { padding: 80px 0; background: linear-gradient(180deg, var(--sand-light) 0%, var(--white) 100%); }
+        .advantages-inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xl); }
+        .advantages-grid { display: flex; align-items: flex-start; justify-content: center; position: relative; }
+        .advantages-line { position: absolute; top: 75px; left: 10%; right: 10%; height: 40px; z-index: 0; }
+        .advantages-line svg { width: 100%; height: 100%; }
+        .advantages-line path { fill: none; stroke: url(#wave-gradient); stroke-width: 2; stroke-linecap: round; }
+        .advantage-card { text-align: center; padding: 30px 24px; flex: 1; max-width: 280px; position: relative; z-index: 1; }
+        .advantage-icon { width: 120px; height: 120px; margin: 0 auto 24px; background: linear-gradient(145deg, var(--white), var(--sand-light)); border: 3px solid var(--beige-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(122, 101, 72, 0.15); transition: all 0.4s; }
+        .advantage-card:hover .advantage-icon { transform: translateY(-6px); border-color: var(--gold); }
+        .advantage-icon svg { width: 48px; height: 48px; color: var(--gold-dark); }
+        .advantage-title { font-family: var(--font-serif); font-style: italic; font-weight: 600; font-size: 24px; color: var(--charcoal); margin-bottom: 12px; }
+        .advantage-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+        .related { padding: var(--space-3xl) 0; background: var(--ivory); }
+        .related-inner { max-width: 1200px; margin: 0 auto; }
+        .related-header { text-align: center; margin-bottom: var(--space-2xl); }
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+        @media (max-width: 1200px) { .breadcrumb, .product-main, .advantages-inner, .related-inner { padding-left: 5%; padding-right: 5%; } .related-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 968px) { .product-main { grid-template-columns: 1fr; gap: var(--space-2xl); } .gallery { position: relative; top: 0; max-width: 500px; margin: 0 auto; } }
+        @media (max-width: 900px) { .advantages-grid { flex-wrap: wrap; gap: var(--space-xl); } .advantages-line { display: none; } .advantage-card { flex: 0 0 45%; max-width: none; } }
+        @media (max-width: 768px) { .breadcrumb { padding-top: 90px; } .product-title { font-size: 28px; } .product-price { font-size: 32px; } .related-grid { grid-template-columns: 1fr; } .cta-total-price { font-size: 26px; } }
+        @media (max-width: 600px) { .advantages { padding: 50px 0; } .advantage-card { flex: 0 0 100%; } .advantage-icon { width: 100px; height: 100px; } .advantage-icon svg { width: 40px; height: 40px; } .advantage-title { font-size: 20px; } }
+    </style>
+</head>
+<body class="product-page">
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="../../index.html" class="navbar-logo">La Maison des Palmiers</a>
+            <div class="navbar-menu">
+                <div class="navbar-dropdown">
+                    <span class="navbar-link navbar-dropdown-toggle active">Boutique <i data-lucide="chevron-down"></i></span>
+                    <div class="navbar-dropdown-menu">
+                        <a href="../boutique.html#ecrins" class="navbar-dropdown-item">Les Écrins<span>Coffrets cadeaux</span></a>
+                        <a href="../boutique.html#box" class="navbar-dropdown-item">Les Box<span>Petit-déj & Brunch</span></a>
+                        <a href="../boutique.html#boissons" class="navbar-dropdown-item">Boissons<span>Jus maison</span></a>
+                    </div>
+                </div>
+                <a href="../traiteur.html" class="navbar-link">Traiteur</a>
+                <a href="../contact.html" class="navbar-link">Contact</a>
+            </div>
+            <button class="navbar-toggle" id="menu-toggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-header"><span class="mobile-menu-title">Menu</span><button class="mobile-menu-close" id="menu-close"><i data-lucide="x"></i></button></div>
+            <nav class="mobile-menu-nav">
+                <a href="../boutique.html" class="mobile-menu-link">Boutique</a>
+                <a href="../traiteur.html" class="mobile-menu-link">Traiteur</a>
+                <a href="../contact.html" class="mobile-menu-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <nav class="breadcrumb-list" aria-label="breadcrumb">
+            <a href="../../index.html">Accueil</a><span class="breadcrumb-separator"></span>
+            <a href="../boutique.html">Boutique</a><span class="breadcrumb-separator"></span>
+            <a href="../boutique.html#ecrins">Écrins</a><span class="breadcrumb-separator"></span>
+            <span>Le Coffret Marrakech</span>
+        </nav>
+    </div>
+
+    <section class="product-main">
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=1200" alt="Le Coffret Marrakech" id="main-image">
+                <span class="gallery-badge">Édition Signature</span>
+            </div>
+            <div class="gallery-thumbs">
+                <button class="gallery-thumb active" data-image="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=1200"><img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=200" alt="Vue 1"></button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=1200"><img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=200" alt="Vue 2"></button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=200" alt="Vue 3"></button>
+                <button class="gallery-thumb" data-image="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=1200"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=200" alt="Vue 4"></button>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <header class="product-header">
+                <span class="product-category">Édition Limitée</span>
+                <h1 class="product-title">Le Coffret Marrakech</h1>
+                <p class="product-tagline">Édition Signature</p>
+                <div class="product-price-block">
+                    <div class="price-main">
+                        <span class="product-price" id="display-price">950</span>
+                        <span class="product-currency">MAD</span>
+                    </div>
+                    <div class="price-info"><p class="price-note">36 pièces • Coffret collector</p></div>
+                </div>
+            </header>
+
+            <div class="product-description">
+                <p>Notre coffret d'exception, inspiré par les saveurs et les couleurs de Marrakech. Une collection unique mariant les épices orientales, le safran marocain et le chocolat belge le plus fin. Présenté dans un coffret artisanal en bois de thuya gravé.</p>
+                <div class="product-composition">
+                    <h3 class="composition-title">Composition</h3>
+                    <div class="composition-list">
+                        <div class="composition-item"><span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>12 chocolats aux épices (safran, cannelle, cardamome)</div>
+                        <div class="composition-item"><span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>8 dattes Medjool garnies premium</div>
+                        <div class="composition-item"><span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>8 fruits givrés sélection</div>
+                        <div class="composition-item"><span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>8 truffes au miel d'Atlas</div>
+                        <div class="composition-item"><span class="composition-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Coffret thuya gravé "Marrakech"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="customization">
+                <h2 class="customization-title">Personnalisation</h2>
+                <div class="option-group">
+                    <label class="option-label"><i data-lucide="sparkles"></i>Options supplémentaires</label>
+                    <div class="extras-list">
+                        <div class="extra-item" data-extra="gift" data-price="0">
+                            <div class="extra-checkbox"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="extra-content"><div class="extra-name">Emballage cadeau prestige</div><div class="extra-desc">Inclus - Papier kraft, ruban doré et sceau de cire</div></div>
+                            <div class="extra-price">Offert</div>
+                        </div>
+                        <div class="extra-item" data-extra="prenom" data-price="80">
+                            <div class="extra-checkbox"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="extra-content"><div class="extra-name">Gravure personnalisée</div><div class="extra-desc">Prénom ou message gravé sur le coffret thuya</div><input type="text" class="extra-input" id="prenom-input" placeholder="Texte à graver (max 25 car.)" maxlength="25"></div>
+                            <div class="extra-price">+80 MAD</div>
+                        </div>
+                        <div class="extra-item" data-extra="express" data-price="0">
+                            <div class="extra-checkbox"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="extra-content"><div class="extra-name">Livraison prioritaire</div><div class="extra-desc">Inclus - Livraison en main propre à Marrakech</div></div>
+                            <div class="extra-price">Offert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-cta">
+                <div class="cta-total"><span class="cta-total-label">Total</span><span class="cta-total-price"><span id="total-price">950</span> <span>MAD</span></span></div>
+                <button class="cta-button" id="order-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Commander sur WhatsApp
+                </button>
+                <p class="cta-note"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Livraison sous 24h à Marrakech</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="advantages-inner">
+            <div class="advantages-grid">
+                <div class="advantages-line"><svg viewBox="0 0 800 30" preserveAspectRatio="none"><defs><linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#D9CFC0" stop-opacity="0"/><stop offset="10%" stop-color="#D9CFC0"/><stop offset="50%" stop-color="#7A6548"/><stop offset="90%" stop-color="#D9CFC0"/><stop offset="100%" stop-color="#D9CFC0" stop-opacity="0"/></linearGradient></defs><path d="M0,15 Q100,5 200,15 T400,15 T600,15 T800,15"/></svg></div>
+                <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><h3 class="advantage-title">Édition limitée</h3><p class="advantage-desc">Création exclusive numérotée</p></div>
+                <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></div><h3 class="advantage-title">Saveurs orientales</h3><p class="advantage-desc">Épices & safran marocain</p></div>
+                <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8V6a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2"/><path d="M12 8V6a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v2"/></svg></div><h3 class="advantage-title">Coffret thuya</h3><p class="advantage-desc">Bois précieux artisanal</p></div>
+                <div class="advantage-card"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div><h3 class="advantage-title">Livraison VIP</h3><p class="advantage-desc">En main propre incluse</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related">
+        <div class="related-inner">
+            <header class="related-header"><h2 class="heading-decorated">Vous aimerez aussi</h2></header>
+            <div class="related-grid">
+                <article class="product-card"><a href="ecrin-celebration.html"><div class="product-card-image img-zoom"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=800" alt="L'Écrin Célébration"></div><div class="product-card-content"><div class="product-card-header"><div><h3 class="product-card-title">L'Écrin Célébration</h3><p class="product-card-subtitle">Assortiment 24 Pièces</p></div><span class="product-card-price">680 MAD</span></div></div></a></article>
+                <article class="product-card"><a href="dattes-royales.html"><div class="product-card-image img-zoom"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=800" alt="Les Dattes Royales"></div><div class="product-card-content"><div class="product-card-header"><div><h3 class="product-card-title">Les Dattes Royales</h3><p class="product-card-subtitle">Medjool & Chocolat</p></div><span class="product-card-price">390 MAD</span></div></div></a></article>
+                <article class="product-card"><a href="ecrin-signature.html"><div class="product-card-image img-zoom"><img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=800" alt="L'Écrin Signature"></div><div class="product-card-content"><div class="product-card-header"><div><h3 class="product-card-title">L'Écrin Signature</h3><p class="product-card-subtitle">Chocolat & Fruits Givrés</p></div><span class="product-card-price">350 MAD</span></div></div></a></article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-2xl); padding-bottom: var(--space-2xl);">
+                <div><h3 class="text-serif text-italic" style="font-size: var(--text-xl); color: var(--gold-light); margin-bottom: var(--space-sm);">La Maison des Palmiers</h3><p class="text-sm" style="color: var(--text-on-dark-muted);">Écrins, Box & Jus artisanaux</p></div>
+                <div><h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Navigation</h4><div style="display: flex; flex-direction: column; gap: var(--space-xs);"><a href="../boutique.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Boutique</a><a href="../traiteur.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Traiteur</a><a href="../contact.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">Contact</a></div></div>
+                <div><h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Contact</h4><div style="display: flex; flex-direction: column; gap: var(--space-xs);"><a href="tel:+212600000000" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">+212 6 00 00 00 00</a><a href="https://wa.me/212600000000" target="_blank" style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">WhatsApp</a></div></div>
+            </div>
+            <div style="padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1); text-align: center;"><p class="text-xs" style="color: var(--text-on-dark-muted);">© 2026 La Maison des Palmiers</p></div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/212600000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+    <script src="../../js/animations.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <script>lucide.createIcons();</script>
+
+    <script>
+        let state = { basePrice: 950, extras: new Set() };
+        const extraPrices = { gift: 0, prenom: 80, express: 0 };
+
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const mainImage = document.getElementById('main-image');
+                mainImage.style.opacity = '0';
+                setTimeout(() => { mainImage.src = thumb.dataset.image; mainImage.style.opacity = '1'; }, 200);
+                document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.extra-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.classList.contains('extra-input')) return;
+                item.classList.toggle('checked');
+                const extra = item.dataset.extra;
+                if (state.extras.has(extra)) { state.extras.delete(extra); } else { state.extras.add(extra); }
+                updatePrice();
+            });
+        });
+
+        const prenomInput = document.getElementById('prenom-input');
+        if (prenomInput) { prenomInput.addEventListener('click', (e) => e.stopPropagation()); }
+
+        function updatePrice() {
+            let total = state.basePrice;
+            state.extras.forEach(extra => { total += extraPrices[extra]; });
+            document.getElementById('display-price').textContent = total;
+            document.getElementById('total-price').textContent = total;
+        }
+
+        document.getElementById('order-btn').addEventListener('click', () => {
+            let total = state.basePrice;
+            let options = [];
+            let prenomValue = '';
+            state.extras.forEach(extra => {
+                total += extraPrices[extra];
+                if (extra === 'prenom') { prenomValue = document.getElementById('prenom-input')?.value?.trim() || ''; options.push('Gravure personnalisée'); }
+            });
+            let message = `Bonjour, je souhaite commander :\n\n🌴 *Le Coffret Marrakech - Édition Signature*\n📦 36 pièces - Coffret collector\n`;
+            if (prenomValue) { message += `✍️ Gravure : ${prenomValue}\n`; }
+            message += `\n💰 *Total : ${total} MAD*`;
+            window.open(`https://wa.me/212600000000?text=${encodeURIComponent(message)}`, '_blank');
+        });
+    </script>
+</body>
+</html>

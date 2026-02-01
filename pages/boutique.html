@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Boutique La Maison des Palmiers - Écrins, Box petit-déjeuner et jus maison à Marrakech.">
+    <title>Boutique | La Maison des Palmiers</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="../index.html" class="navbar-logo">La Maison des Palmiers</a>
+            <div class="navbar-menu">
+                <div class="navbar-dropdown">
+                    <span class="navbar-link navbar-dropdown-toggle active">
+                        Boutique <i data-lucide="chevron-down"></i>
+                    </span>
+                    <div class="navbar-dropdown-menu">
+                        <a href="#ecrins" class="navbar-dropdown-item" onclick="filterProducts('ecrins')">
+                            Les Écrins
+                            <span>Coffrets cadeaux</span>
+                        </a>
+                        <a href="#box" class="navbar-dropdown-item" onclick="filterProducts('box')">
+                            Les Box
+                            <span>Petit-déj & Brunch</span>
+                        </a>
+                        <a href="#boissons" class="navbar-dropdown-item" onclick="filterProducts('boissons')">
+                            Boissons
+                            <span>Jus maison</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="traiteur.html" class="navbar-link">Traiteur</a>
+                <a href="contact.html" class="navbar-link">Contact</a>
+            </div>
+            <button class="navbar-toggle" id="menu-toggle" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-header">
+                <span class="mobile-menu-title">Menu</span>
+                <button class="mobile-menu-close" id="menu-close"><i data-lucide="x"></i></button>
+            </div>
+            <nav class="mobile-menu-nav">
+                <a href="boutique.html" class="mobile-menu-link">Boutique</a>
+                <a href="traiteur.html" class="mobile-menu-link">Traiteur</a>
+                <a href="contact.html" class="mobile-menu-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <section style="padding: 120px 10% var(--space-lg); text-align: center;">
+        <span class="label reveal">Notre Boutique</span>
+        <h1 class="heading-display reveal" style="margin-top: var(--space-sm);">Nos Produits</h1>
+    </section>
+
+    <!-- FILTRES -->
+    <section style="padding: 0 10% var(--space-2xl);">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">Tout</button>
+                <button class="filter-tab" data-filter="ecrins" onclick="filterProducts('ecrins')">Écrins</button>
+                <button class="filter-tab" data-filter="box" onclick="filterProducts('box')">Box</button>
+                <button class="filter-tab" data-filter="boissons" onclick="filterProducts('boissons')">Boissons</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUITS -->
+    <section style="padding: 0 10% var(--space-3xl);">
+        <div style="max-width: var(--container-xl); margin: 0 auto;">
+            <div class="products-grid" id="products-grid">
+
+                <!-- ===== ÉCRINS ===== -->
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/ecrin-signature.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=800" alt="L'Écrin Signature">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">L'Écrin Signature</h3>
+                                    <p class="product-card-subtitle">Chocolat & Fruits Givrés</p>
+                                </div>
+                                <span class="product-card-price">350 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/coeur-geometrique.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800" alt="Le Cœur Géométrique">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Le Cœur Géométrique</h3>
+                                    <p class="product-card-subtitle">Chocolat Ruby & Or</p>
+                                </div>
+                                <span class="product-card-price">480 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/fraises-imperiales.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800" alt="Les Fraises Impériales">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Les Fraises Impériales</h3>
+                                    <p class="product-card-subtitle">Fraises Enrobées</p>
+                                </div>
+                                <span class="product-card-price">420 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/dattes-royales.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=800" alt="Les Dattes Royales">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Les Dattes Royales</h3>
+                                    <p class="product-card-subtitle">Medjool & Chocolat</p>
+                                </div>
+                                <span class="product-card-price">390 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/ecrin-celebration.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=800" alt="L'Écrin Célébration">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">L'Écrin Célébration</h3>
+                                    <p class="product-card-subtitle">Assortiment 24 Pièces</p>
+                                </div>
+                                <span class="product-card-price">680 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="ecrins">
+                    <a href="produits/coffret-marrakech.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?q=80&w=800" alt="Le Coffret Marrakech">
+                            <span class="product-badge">Écrins</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Le Coffret Marrakech</h3>
+                                    <p class="product-card-subtitle">Édition Signature</p>
+                                </div>
+                                <span class="product-card-price">950 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- ===== BOX ===== -->
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-petit-dej-duo.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=800" alt="Box Petit-Déjeuner Duo">
+                            <span class="product-badge">Box</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Petit-Déj Duo</h3>
+                                    <p class="product-card-subtitle">Pour 2 personnes</p>
+                                </div>
+                                <span class="product-card-price">320 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-brunch-duo.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=800" alt="Box Brunch Duo">
+                            <span class="product-badge">Box</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Brunch Duo</h3>
+                                    <p class="product-card-subtitle">Pour 2 personnes</p>
+                                </div>
+                                <span class="product-card-price">520 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-brunch-famille.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800" alt="Box Brunch Famille">
+                            <span class="product-badge">Box</span>
+                            <span class="product-badge-popular">Populaire</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Brunch Famille</h3>
+                                    <p class="product-card-subtitle">Pour 4 personnes</p>
+                                </div>
+                                <span class="product-card-price">920 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-brunch-xl.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800" alt="Box Brunch Grand Format">
+                            <span class="product-badge">Box</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Brunch XL</h3>
+                                    <p class="product-card-subtitle">Pour 6-8 personnes</p>
+                                </div>
+                                <span class="product-card-price">1 450 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-gouter.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800" alt="Box Goûter">
+                            <span class="product-badge">Box</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Goûter</h3>
+                                    <p class="product-card-subtitle">Pâtisseries & thé</p>
+                                </div>
+                                <span class="product-card-price">280 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="box">
+                    <a href="produits/box-healthy.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800" alt="Box Healthy">
+                            <span class="product-badge">Box</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Box Healthy</h3>
+                                    <p class="product-card-subtitle">Smoothie bowl & granola</p>
+                                </div>
+                                <span class="product-card-price">380 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- ===== BOISSONS ===== -->
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/orange-presse.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=800" alt="Jus Orange Pressé">
+                            <span class="product-badge">Boissons</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Orange Pressé</h3>
+                                    <p class="product-card-subtitle">50cl • Pur jus</p>
+                                </div>
+                                <span class="product-card-price">45 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/green-detox.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1610970881699-44a5587cabec?q=80&w=800" alt="Green Detox">
+                            <span class="product-badge">Boissons</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Green Detox</h3>
+                                    <p class="product-card-subtitle">50cl • Épinard, pomme, gingembre</p>
+                                </div>
+                                <span class="product-card-price">65 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/smoothie-fruits-rouges.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=800" alt="Smoothie Fruits Rouges">
+                            <span class="product-badge">Boissons</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Smoothie Fruits Rouges</h3>
+                                    <p class="product-card-subtitle">50cl • Fraise, framboise, myrtille</p>
+                                </div>
+                                <span class="product-card-price">75 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/lait-amande.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1550411294-875e5b4cc498?q=80&w=800" alt="Lait d'Amande">
+                            <span class="product-badge">Boissons</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Lait d'Amande</h3>
+                                    <p class="product-card-subtitle">50cl • Fait maison</p>
+                                </div>
+                                <span class="product-card-price">55 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/pack-6-jus.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?q=80&w=800" alt="Pack Jus">
+                            <span class="product-badge">Boissons</span>
+                            <span class="product-badge-popular">-25%</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Pack 6 Jus</h3>
+                                    <p class="product-card-subtitle">Assortiment au choix</p>
+                                </div>
+                                <span class="product-card-price">240 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="product-card" data-category="boissons">
+                    <a href="produits/smoothie-bowl.html">
+                        <div class="product-card-image img-zoom">
+                            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?q=80&w=800" alt="Smoothie Bowl">
+                            <span class="product-badge">Boissons</span>
+                        </div>
+                        <div class="product-card-content">
+                            <div class="product-card-header">
+                                <div>
+                                    <h3 class="product-card-title">Smoothie Bowl</h3>
+                                    <p class="product-card-subtitle">Açaï, granola, fruits frais</p>
+                                </div>
+                                <span class="product-card-price">95 MAD</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+
+            <!-- Message si aucun produit -->
+            <div id="no-products" style="display: none; text-align: center; padding: var(--space-3xl);">
+                <p style="color: var(--text-muted);">Aucun produit dans cette catégorie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONNALISATION -->
+    <section style="background: linear-gradient(135deg, var(--beige-deep) 0%, var(--beige-darker) 100%); padding: var(--space-3xl) 10%; text-align: center;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 class="heading-decorated">Création personnalisée ?</h2>
+            <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+                Logo, couleurs, assortiment sur mesure pour vos événements.
+            </p>
+            <a href="https://wa.me/212600000000?text=Bonjour, je souhaite une création personnalisée" class="btn btn-primary" style="margin-top: var(--space-lg);" target="_blank">
+                Demander un devis
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-2xl); padding-bottom: var(--space-2xl);">
+                <div>
+                    <h3 class="text-serif text-italic" style="font-size: var(--text-xl); color: var(--gold-light); margin-bottom: var(--space-sm);">La Maison des Palmiers</h3>
+                    <p class="text-sm" style="color: var(--text-on-dark-muted); line-height: 1.6;">Écrins, Box & Jus artisanaux à Marrakech</p>
+                </div>
+                <div>
+                    <h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Navigation</h4>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                        <a href="boutique.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">Boutique</a>
+                        <a href="traiteur.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">Traiteur</a>
+                        <a href="contact.html" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="label" style="color: var(--gold-light); margin-bottom: var(--space-sm);">Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                        <a href="tel:+212600000000" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">+212 6 00 00 00 00</a>
+                        <a href="https://www.instagram.com/la_maison_des_palmiers/" target="_blank" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">Instagram</a>
+                        <a href="https://wa.me/212600000000" target="_blank" style="color: var(--text-on-dark-muted); font-size: var(--text-sm); transition: color 0.3s ease;">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p class="text-xs" style="color: var(--text-on-dark-muted);">© 2026 La Maison des Palmiers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/212600000000" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="../js/animations.js"></script>
+    <script src="../js/navigation.js"></script>
+
+    <!-- FILTER SCRIPT -->
+    <script>
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            const tabs = document.querySelectorAll('.filter-tab');
+            const noProducts = document.getElementById('no-products');
+            let visibleCount = 0;
+
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.filter === category) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Filter products with animation
+            products.forEach((product, index) => {
+                const productCategory = product.dataset.category;
+
+                if (category === 'all' || productCategory === category) {
+                    product.style.display = 'block';
+                    product.style.transition = 'none';
+                    product.style.opacity = '0';
+                    product.style.transform = 'translateY(8px)';
+
+                    requestAnimationFrame(() => {
+                        product.style.transition = 'opacity 0.18s ease, transform 0.18s ease';
+                        product.style.transitionDelay = `${index * 15}ms`;
+                        product.style.opacity = '1';
+                        product.style.transform = 'translateY(0)';
+                    });
+
+                    visibleCount++;
+                } else {
+                    product.style.transition = 'opacity 0.12s ease, transform 0.12s ease';
+                    product.style.opacity = '0';
+                    product.style.transform = 'translateY(-5px)';
+                    setTimeout(() => {
+                        product.style.display = 'none';
+                    }, 120);
+                }
+            });
+
+            // Show message if no products
+            noProducts.style.display = visibleCount === 0 ? 'block' : 'none';
+
+            // Update URL hash
+            if (category !== 'all') {
+                history.replaceState(null, null, '#' + category);
+            } else {
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        // Check URL hash on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && ['ecrins', 'box', 'boissons'].includes(hash)) {
+                filterProducts(hash);
+            }
+        });
+    </script>
+
+    <style>
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-lg);
+        }
+
+        .filter-tab {
+            padding: 16px 40px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: white;
+            border: 2px solid transparent;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--charcoal), var(--gold-dark));
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--gold);
+            color: var(--charcoal);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+
+        .filter-tab:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .filter-tab.active {
+            background: var(--charcoal);
+            color: var(--ivory);
+            border-color: var(--charcoal);
+            box-shadow: 0 4px 20px rgba(26,26,26,0.3);
+        }
+
+        .filter-tab.active::before {
+            left: 0;
+        }
+
+        /* Product Badge */
+        .product-badge {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--white);
+            color: var(--text-secondary);
+        }
+
+        .product-badge-popular {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        /* Product card link reset */
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding-left: 5% !important;
+                padding-right: 5% !important;
+            }
+
+            .filter-tabs {
+                gap: var(--space-sm);
+                padding: var(--space-lg) 0;
+            }
+
+            .filter-tab {
+                padding: 14px 28px;
+                font-size: 10px;
+                border-radius: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-tab {
+                padding: 12px 24px;
+                font-size: 9px;
+                letter-spacing: 0.12em;
+                border-radius: 30px;
+            }
+
+            .filter-tabs {
+                gap: 8px;
+            }
+        }
+    </style>
+</body>
+</html>

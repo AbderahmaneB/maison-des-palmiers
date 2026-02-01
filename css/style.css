@@ -1,0 +1,178 @@
+/* =============================================
+   LA MAISON DES PALMIERS
+   FICHIER CSS PRINCIPAL
+
+   Gifting & Catering de Luxe • Marrakech
+   Direction Artistique : Sable, Or, Charbon
+   ============================================= */
+
+/* Import des modules CSS */
+@import url('variables.css');
+@import url('base.css');
+@import url('components.css');
+@import url('animations.css');
+@import url('layout.css');
+
+/* ==========================================
+   RESPONSIVE UTILITIES
+   ========================================== */
+
+/* Mobile Only */
+@media (max-width: 639px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Tablet and Up */
+@media (min-width: 640px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+/* Desktop Only */
+@media (min-width: 1024px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Mobile/Tablet Only */
+@media (max-width: 1023px) {
+    .show-desktop {
+        display: none !important;
+    }
+}
+
+/* ==========================================
+   SPACING UTILITIES
+   ========================================== */
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+.mt-3xl { margin-top: var(--space-3xl); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+.mb-3xl { margin-bottom: var(--space-3xl); }
+
+.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.py-xl { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
+
+.px-sm { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+.px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
+.px-lg { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+.px-xl { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+
+/* ==========================================
+   TEXT UTILITIES
+   ========================================== */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+
+.tracking-wide { letter-spacing: 0.05em; }
+.tracking-wider { letter-spacing: 0.1em; }
+.tracking-widest { letter-spacing: 0.2em; }
+
+.leading-tight { line-height: 1.2; }
+.leading-normal { line-height: 1.6; }
+.leading-relaxed { line-height: 1.8; }
+
+.opacity-40 { opacity: 0.4; }
+.opacity-60 { opacity: 0.6; }
+.opacity-80 { opacity: 0.8; }
+
+/* ==========================================
+   COLOR UTILITIES
+   ========================================== */
+
+.text-charcoal { color: var(--charcoal); }
+.text-gold { color: var(--gold); }
+.text-ivory { color: var(--ivory); }
+.text-sand { color: var(--sand); }
+
+.bg-sand { background-color: var(--sand); }
+.bg-sand-light { background-color: var(--sand-light); }
+.bg-charcoal { background-color: var(--charcoal); }
+.bg-ivory { background-color: var(--ivory); }
+
+/* ==========================================
+   BORDER UTILITIES
+   ========================================== */
+
+.border-subtle {
+    border: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.border-gold {
+    border: 1px solid var(--gold);
+}
+
+.border-t {
+    border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.border-b {
+    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR FOR SPECIFIC ELEMENTS
+   ========================================== */
+
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+
+@media print {
+    .navbar,
+    .mobile-menu,
+    .whatsapp-float,
+    #loader {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}
