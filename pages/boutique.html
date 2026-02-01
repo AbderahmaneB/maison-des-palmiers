@@ -82,7 +82,7 @@
     </section>
 
     <!-- FILTRES -->
-    <section style="padding: 0 10% 5%;">
+    <section style="padding: 0 10% 1%;">
         <div style="max-width: 700px; margin: 0 auto;">
             <div class="filter-tabs">
                 <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">Tout</button>
@@ -565,6 +565,7 @@
 
         .filter-tab {
             padding: 16px 40px;
+            min-height: 48px;
             font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.15em;
@@ -578,6 +579,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .filter-tab::before {
@@ -656,27 +658,41 @@
             }
 
             .filter-tabs {
-                gap: var(--space-sm);
+                gap: 12px;
                 padding: var(--space-lg) 0;
             }
 
             .filter-tab {
                 padding: 14px 28px;
-                font-size: 10px;
+                min-height: 48px;
+                font-size: 11px;
                 border-radius: 40px;
             }
         }
 
         @media (max-width: 480px) {
             .filter-tab {
-                padding: 12px 24px;
-                font-size: 9px;
-                letter-spacing: 0.12em;
+                padding: 14px 24px;
+                min-height: 48px;
+                font-size: 11px;
+                letter-spacing: 0.1em;
                 border-radius: 30px;
             }
 
             .filter-tabs {
-                gap: 8px;
+                gap: 10px;
+            }
+        }
+
+        /* Touch feedback */
+        @media (hover: none) and (pointer: coarse) {
+            .filter-tab:active {
+                transform: scale(0.96);
+                opacity: 0.9;
+            }
+
+            .filter-tab:hover {
+                transform: none;
             }
         }
     </style>
