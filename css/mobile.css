@@ -72,6 +72,11 @@
     /* --- SECTIONS --- */
     section {
         padding: 48px 16px !important;
+        padding-top: 100px !important;
+    }
+
+    section.hero {
+        padding-top: 0 !important;
     }
 
     /* Section without padding (like Traiteur) */
