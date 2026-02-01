@@ -426,10 +426,6 @@
    ========================================== */
 
 @media (max-width: 896px) and (orientation: landscape) {
-    .hero {
-        min-height: 80vh !important;
-    }
-
     .mobile-menu-nav {
         gap: 12px !important;
     }
