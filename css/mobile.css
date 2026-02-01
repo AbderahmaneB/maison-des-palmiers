@@ -38,8 +38,8 @@
 
     /* --- HERO --- */
     .hero {
-        min-height: 50% !important;
-        height: 50% !important;
+        min-height: 70vh !important;
+        height: auto !important;
     }
 
     .hero-content {
@@ -71,8 +71,8 @@
 
     /* --- SECTIONS --- */
     section:not(.hero) {
-        padding: 48px 16px !important;
-        padding-top: 90px !important;
+        padding: 24px 16px !important;
+        padding-top: 80px !important;
     }
 
     section.hero {
@@ -80,16 +80,10 @@
         padding-bottom: 0 !important;
     }
 
-    /* First section after hero needs extra padding */
-    section:first-of-type:not(.hero),
-    .hero + section {
-        padding-top: 90px !important;
-    }
-
     /* Section without padding (like Traiteur) */
     section[style*="padding: 0"] {
-        padding: 0 !important;
-        padding-top: 90px !important;
+        padding: 0 16px !important;
+        padding-top: 80px !important;
     }
 
     .section-header {
