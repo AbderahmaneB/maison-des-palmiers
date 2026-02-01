@@ -13,7 +13,19 @@
       "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth login --web -h github.com)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo create maison-des-palmiers --public --source=\"c:\\\\Users\\\\Shadow\\\\Desktop\\\\maison des palmier\" --push)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" api repos/AbderahmaneB/maison-des-palmiers/pages -X POST -f build_type=workflow -f source[branch]=master -f source[path]=/)",
+      "Bash(cmd /c \"cd /d \"\"c:\\\\Users\\\\Shadow\\\\Desktop\\\\maison des palmier\"\" && gh run list --limit 3\")",
+      "Bash(powershell -Command \"gh run list --repo AbderahmaneB/maison-des-palmiers --limit 3\")",
+      "Bash(for file in *.html)",
+      "Bash(do)",
+      "Bash(if [ \"$file\" != \"box-brunch-duo.html\" ])",
+      "Bash(then)",
+      "Bash(powershell -Command \"\\(Get-Content ''$file'' -Raw\\) -replace ''<i data-lucide=\"\"menu\"\"></i>'', ''<svg width=\"\"24\"\" height=\"\"24\"\" viewBox=\"\"0 0 24 24\"\" fill=\"\"none\"\" stroke=\"\"currentColor\"\" stroke-width=\"\"2.5\"\" stroke-linecap=\"\"round\"\"><line x1=\"\"4\"\" y1=\"\"6\"\" x2=\"\"20\"\" y2=\"\"6\"\"></line><line x1=\"\"4\"\" y1=\"\"12\"\" x2=\"\"20\"\" y2=\"\"12\"\"></line><line x1=\"\"4\"\" y1=\"\"18\"\" x2=\"\"20\"\" y2=\"\"18\"\"></line></svg>'' | Set-Content ''$file'' -NoNewline\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(powershell -Command:*)"
     ]
   }
 }
