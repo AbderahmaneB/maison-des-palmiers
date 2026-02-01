@@ -9,8 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Critical CSS - Prevent FOUC */
+        .mobile-menu { transform: translateX(100%); position: fixed; inset: 0; z-index: 9999; }
+        body { opacity: 0; transition: opacity 0.1s; }
+        body.loaded { opacity: 1; }
+    </style>
     <link rel="stylesheet" href="../../css/style.css" id="main-css">
     <script>document.getElementById('main-css').href = '../../css/style.css?v=' + Date.now();</script>
+    <script>document.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));</script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         /* ============================================
