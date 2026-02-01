@@ -1,0 +1,462 @@
+/* =============================================
+   LA MAISON DES PALMIERS - MOBILE CSS
+   Styles Mobile-First pour tout le site
+   ============================================= */
+
+/* ==========================================
+   MOBILE BASE (< 768px)
+   ========================================== */
+
+@media (max-width: 767px) {
+    /* --- TYPOGRAPHY --- */
+    html {
+        font-size: 15px;
+    }
+
+    h1, .text-4xl, .text-5xl {
+        font-size: 1.75rem !important;
+        line-height: 1.2;
+    }
+
+    h2, .text-3xl {
+        font-size: 1.5rem !important;
+    }
+
+    h3, .text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    /* --- NAVBAR --- */
+    .navbar-inner {
+        height: 70px;
+        padding: 0 16px;
+    }
+
+    .navbar-logo {
+        font-size: 1.1rem !important;
+    }
+
+    /* --- HERO --- */
+    .hero {
+        min-height: 50vh !important;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 24px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        padding: 14px 24px;
+        font-size: 12px;
+    }
+
+    /* --- SECTIONS --- */
+    section {
+        padding: 48px 16px !important;
+    }
+
+    /* Section without padding (like Traiteur) */
+    section[style*="padding: 0"] {
+        padding: 0 !important;
+    }
+
+    .section-header {
+        margin-bottom: 32px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    /* --- HEADING DECORATED --- */
+    .heading-decorated {
+        font-size: 1.25rem !important;
+        gap: 16px;
+    }
+
+    .heading-decorated::before,
+    .heading-decorated::after {
+        max-width: 40px;
+    }
+
+    /* --- GRIDS --- */
+    [style*="grid-template-columns: repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    /* --- CATEGORY CARDS --- */
+    [style*="aspect-ratio: 4/5"] {
+        aspect-ratio: 16/10 !important;
+    }
+
+    /* --- PRODUCT CARDS --- */
+    .product-card-title {
+        font-size: 1rem !important;
+    }
+
+    .product-card-subtitle {
+        font-size: 0.75rem !important;
+    }
+
+    .product-card-price {
+        font-size: 0.9rem !important;
+    }
+
+    .product-card-header {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    /* --- BUTTONS --- */
+    .btn {
+        padding: 14px 24px;
+        font-size: 11px;
+        width: 100%;
+    }
+
+    .btn-sm {
+        padding: 10px 18px;
+    }
+
+    /* --- TRAITEUR CARD --- */
+    .traiteur-card {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        min-height: auto !important;
+    }
+
+    .traiteur-card-image {
+        height: 250px !important;
+        width: 100% !important;
+    }
+
+    .traiteur-card-content {
+        padding: 32px 24px !important;
+        text-align: center;
+        align-items: center !important;
+    }
+
+    .traiteur-card-content .btn {
+        width: auto;
+    }
+
+    /* --- FOOTER --- */
+    .footer-inner {
+        padding: 32px 16px !important;
+    }
+
+    .footer-inner > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        text-align: center;
+    }
+
+    /* --- WHATSAPP FLOAT --- */
+    .whatsapp-float {
+        bottom: 16px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+    }
+
+    /* --- FORMS --- */
+    .form-input,
+    .form-textarea,
+    .form-select {
+        padding: 12px 14px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* --- FILTER TABS --- */
+    .filter-tabs {
+        flex-wrap: wrap;
+        gap: 8px !important;
+        justify-content: center;
+    }
+
+    .filter-tabs button {
+        padding: 8px 14px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* ==========================================
+   TABLET (768px - 1023px)
+   ========================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .navbar-inner {
+        padding: 0 24px;
+    }
+
+    section {
+        padding: 64px 24px !important;
+    }
+
+    .hero {
+        min-height: 55vh !important;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    [style*="grid-template-columns: repeat(auto-fit"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .traiteur-card-content {
+        padding: 32px !important;
+    }
+}
+
+/* ==========================================
+   PRODUCT PAGE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 767px) {
+    /* Product detail page */
+    .product-hero {
+        flex-direction: column !important;
+        padding: 100px 16px 32px !important;
+    }
+
+    .product-hero-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 300px !important;
+    }
+
+    .product-hero-content {
+        padding: 24px 0 !important;
+    }
+
+    .product-hero-title {
+        font-size: 1.5rem !important;
+    }
+
+    .product-hero-price {
+        font-size: 1.75rem !important;
+    }
+
+    /* Options grid */
+    .options-grid,
+    [style*="display: grid"][style*="gap"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Radio/checkbox cards */
+    .option-card,
+    [style*="border"][style*="padding"][style*="cursor: pointer"] {
+        padding: 12px !important;
+    }
+
+    /* Quantity selectors */
+    [style*="display: flex"][style*="gap"] {
+        flex-wrap: wrap;
+    }
+}
+
+/* ==========================================
+   BOUTIQUE PAGE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 767px) {
+    /* Products grid */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    .product-card-image {
+        aspect-ratio: 1/1 !important;
+    }
+
+    /* Badges */
+    .product-badge {
+        font-size: 9px !important;
+        padding: 4px 8px !important;
+    }
+
+    .product-badge-popular {
+        font-size: 9px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .product-card-image {
+        aspect-ratio: 4/3 !important;
+    }
+}
+
+/* ==========================================
+   CONTACT PAGE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 767px) {
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .contact-card {
+        padding: 20px !important;
+    }
+
+    .contact-form {
+        padding: 24px !important;
+    }
+}
+
+/* ==========================================
+   TRAITEUR PAGE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 767px) {
+    .service-card {
+        padding: 24px !important;
+    }
+
+    .price-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .price-item-value {
+        align-self: flex-end;
+    }
+}
+
+/* ==========================================
+   UTILITIES FOR MOBILE
+   ========================================== */
+
+@media (max-width: 767px) {
+    .mobile-full-width {
+        width: 100% !important;
+    }
+
+    .mobile-text-center {
+        text-align: center !important;
+    }
+
+    .mobile-stack {
+        flex-direction: column !important;
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mobile-padding {
+        padding: 16px !important;
+    }
+
+    .mobile-gap-sm {
+        gap: 12px !important;
+    }
+}
+
+/* ==========================================
+   TOUCH IMPROVEMENTS
+   ========================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn {
+        min-height: 44px;
+    }
+
+    .navbar-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Remove hover effects that don't work on touch */
+    .product-card:hover {
+        transform: none;
+    }
+
+    .product-card:hover .product-card-image img {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    /* Active states instead */
+    .btn:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .product-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ==========================================
+   LANDSCAPE MOBILE
+   ========================================== */
+
+@media (max-width: 896px) and (orientation: landscape) {
+    .hero {
+        min-height: 80vh !important;
+    }
+
+    .mobile-menu-nav {
+        gap: 12px !important;
+    }
+
+    .mobile-menu-link {
+        font-size: 1.25rem !important;
+        padding: 8px 0 !important;
+    }
+}
+
+/* ==========================================
+   SAFE AREA (Notch support)
+   ========================================== */
+
+@supports (padding: max(0px)) {
+    .navbar {
+        padding-top: max(0px, env(safe-area-inset-top));
+    }
+
+    .mobile-menu-inner {
+        padding-top: max(24px, env(safe-area-inset-top));
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+        padding-left: max(24px, env(safe-area-inset-left));
+        padding-right: max(24px, env(safe-area-inset-right));
+    }
+
+    .footer {
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+    }
+}
