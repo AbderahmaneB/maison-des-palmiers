@@ -37,10 +37,6 @@
     }
 
     /* --- HERO --- */
-    .hero {
-        min-height: 50vh !important;
-    }
-
     .hero-content {
         padding: 0 20px;
     }
