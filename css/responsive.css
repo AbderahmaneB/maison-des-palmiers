@@ -69,10 +69,6 @@
     }
 
     /* --- SECTIONS --- */
-    section {
-        padding: 48px 16px !important;
-    }
-
     /* Section without padding (like Traiteur) */
     section[style*="padding: 0"] {
         padding: 0 !important;

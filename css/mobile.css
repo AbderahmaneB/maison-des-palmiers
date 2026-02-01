@@ -70,20 +70,11 @@
     }
 
     /* --- SECTIONS --- */
-    section:not(.hero) {
-        padding: 24px 16px !important;
-        padding-top: 80px !important;
-    }
+
 
     section.hero {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
-    }
-
-    /* Section without padding (like Traiteur) */
-    section[style*="padding: 0"] {
-        padding: 0 16px !important;
-        padding-top: 80px !important;
     }
 
     .section-header {
@@ -91,7 +82,7 @@
     }
 
     .container {
-        padding: 0 16px;
+        padding: 18px 16px;
     }
 
     /* --- HEADING DECORATED --- */
@@ -218,8 +209,11 @@
         padding: 0 24px;
     }
 
-    section {
-        padding: 64px 24px !important;
+    section:not(.hero) {
+        padding-top: 80px !important;
+        padding-right: 24px !important;
+        padding-bottom: 64px !important;
+        padding-left: 24px !important;
     }
 
     .hero {
