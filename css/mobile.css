@@ -70,18 +70,26 @@
     }
 
     /* --- SECTIONS --- */
-    section {
+    section:not(.hero) {
         padding: 48px 16px !important;
-        padding-top: 100px !important;
+        padding-top: 90px !important;
     }
 
     section.hero {
         padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* First section after hero needs extra padding */
+    section:first-of-type:not(.hero),
+    .hero + section {
+        padding-top: 90px !important;
     }
 
     /* Section without padding (like Traiteur) */
     section[style*="padding: 0"] {
         padding: 0 !important;
+        padding-top: 90px !important;
     }
 
     .section-header {
