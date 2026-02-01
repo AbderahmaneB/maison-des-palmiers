@@ -73,6 +73,11 @@
         padding: 48px 16px !important;
     }
 
+    /* Section without padding (like Traiteur) */
+    section[style*="padding: 0"] {
+        padding: 0 !important;
+    }
+
     .section-header {
         margin-bottom: 32px;
     }
@@ -135,14 +140,19 @@
     /* --- TRAITEUR CARD --- */
     .traiteur-card {
         grid-template-columns: 1fr !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        min-height: auto !important;
     }
 
     .traiteur-card-image {
-        height: 200px !important;
+        height: 250px !important;
+        width: 100% !important;
     }
 
     .traiteur-card-content {
-        padding: 24px !important;
+        padding: 32px 24px !important;
         text-align: center;
         align-items: center !important;
     }
